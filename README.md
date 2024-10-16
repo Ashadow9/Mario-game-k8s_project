@@ -185,7 +185,6 @@ Clone the github repo by running the following commands ---->
 ![image](https://github.com/user-attachments/assets/be611c3e-8687-427d-b0b1-8de3181111b8)
 
 Edit the backend.tf file by → vi backend.tf
-![image](https://github.com/user-attachments/assets/be7691b0-fdf7-4424-8f90-88aa2e38de84)
 
 Note:- make sure to provide your bucket and region name in this file otherwise it doesn’t work and IAM role is also associated with your ec2 which helps ec2 to use other services such S3 bucket.
 
