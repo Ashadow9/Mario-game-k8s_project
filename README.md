@@ -172,7 +172,7 @@ Clone the github repo by running the following commands ---->
     ```
 3. Clone the Git repository into the super_mario directory
     ```bash
-    git clone https://github.com/cloudsolutionstech/mario_project.git
+    git clone  https://github.com/Aj7Ay/k8s-mario.git
     ```
 4. Change to the mario_project directory   
     ```bash
