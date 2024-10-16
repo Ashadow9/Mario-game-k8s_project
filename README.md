@@ -1,5 +1,5 @@
-# Mario-game_eks_project
-## Super Mario Deployment Automation on Kubernetes with Terraform........
+
+##  Mario-game Deployment Automation on Kubernetes with Terraform........
 
 
 ## Prerequisite
@@ -135,6 +135,8 @@ Using the AWS CLI, users can perform a variety of tasks such as creating and man
     ```bash
     which kubectl
     ```
+    ![image](https://github.com/user-attachments/assets/ad1a24d8-5dea-40b3-b688-ab88ab278b80)
+
 
 At this point, every thing is setup and installed so the next step is to create an IAM EC2 Role.
 
@@ -143,10 +145,15 @@ The IAM role for EC2 is essential because it provides the necessary permissions 
 01. on the search bar type IAM.
 02. click on Roles on the left side.
 03. click on create role and choose EC2 from the dropdown.
+![image](https://github.com/user-attachments/assets/2202c073-e2bd-4514-8746-2e80891717a1)
+
 04. click on next.
 05. choose administrator access on permission sections.
+![image](https://github.com/user-attachments/assets/c5591279-a5f1-4dd7-bbd1-382bd3ec4f66)
 06. click on next and give a name to your role.
 07. click on create role option and your IAM role is created.
+   ![image](https://github.com/user-attachments/assets/6b6b453a-221d-417a-893b-447e5d11708b)
+
 
 ## Step 4 →Attach IAM role with your EC2
 01. go to EC2 section.
@@ -175,8 +182,11 @@ Clone the github repo by running the following commands ---->
     ```bash
     cd kubectl-terraform
     ```
+![image](https://github.com/user-attachments/assets/be611c3e-8687-427d-b0b1-8de3181111b8)
 
 Edit the backend.tf file by → vi backend.tf
+![image](https://github.com/user-attachments/assets/be7691b0-fdf7-4424-8f90-88aa2e38de84)
+
 Note:- make sure to provide your bucket and region name in this file otherwise it doesn’t work and IAM role is also associated with your ec2 which helps ec2 to use other services such S3 bucket.
 
 ## Now run the following commands
@@ -203,6 +213,7 @@ Terraform plan allows us to preview the modifications to our infrastructure. Thi
 
     terraform apply --auto-approve
 
+![image](https://github.com/user-attachments/assets/8dcab67c-b01a-41f6-a48e-d52a6404e3bf)
 
 Executing 'terraform apply --auto-approve' is akin to instructing the computer to proceed with building everything precisely as outlined, without prompting for confirmation at every step. This approach automates the deployment of our infrastructure, eliminating the need for constant manual input. Upon execution, Terraform analyzes our code, identifies necessary creations or alterations, and proceeds with construction, bypassing the usual approval check with the user.
 The apply takes 10 to 15 min for completion.
@@ -212,6 +223,7 @@ Below command is used to update the configuration of EKS
 
     aws eks update-kubeconfig --name EKS_CLOUD --region ap-south-1
 
+![image](https://github.com/user-attachments/assets/dee20795-9bc3-42af-b45f-113781f3801d)
 
 Using the command 'aws eks update-kubeconfig --name EKS_CLOUD --region ap-south-1' is essentially informing our computer that we're utilizing Amazon EKS (Elastic Kubernetes Service) in the 'us-east-1' region and wish to establish a connection to it. You can specify your preferred region accordingly.
 
@@ -233,12 +245,15 @@ The deployment.yaml file serves as a comprehensive set of instructions for a com
     ```bash
     kubectl apply -f service.yaml
     ```
+    ![image](https://github.com/user-attachments/assets/bb9d91f4-7e5e-42bd-a612-deaa447f3621)
+
 The service.yaml file functions as a structured set of rules facilitating communication among components within a software application. Resembling a directory, it dictates the means for locating and interacting with various segments of our application. This document defines the communication pathways between different parts of the application, as well as outlining accessibility for external services or users.
 
 04. Run this command
     ```bash
     kubectl get all
     ```
+![image](https://github.com/user-attachments/assets/04d7750a-7cc7-45d8-8ecf-d2102e648308)
 
 05. Run the follwing command to get the load balancer ingress. This command tells all the details of your application.
 
@@ -252,6 +267,12 @@ Before you indulge in playing and enjoying your AWS resources, remember to clean
 
 Load Balancer Ingress:
 Load Balancer Ingress is a crucial mechanism for distributing incoming internet traffic across multiple servers or services. It acts as a digital receptionist at a bustling office building entrance, directing visitors to various floors or departments to prevent overcrowding. Similarly, in the digital realm, Load Balancer Ingress ensures a seamless user experience, enhances application performance, and prevents any single server from being overwhelmed by excessive traffic.
+
+We can see the game after copying the load balancer ingress 
+![image](https://github.com/user-attachments/assets/1d5f5219-8427-43cd-a553-5e5ac68f781a)
+
+
+![image](https://github.com/user-attachments/assets/343a72c6-9c21-4ef7-abb8-4a70e4331eda)
 
 ## Step 7 → Destroy all the Insrastructure
 01. Below commands delete your deployment and service.
@@ -271,6 +292,8 @@ Load Balancer Ingress is a crucial mechanism for distributing incoming internet 
     ```bash
     terraform destroy --auto-approve
     ```
+    ![image](https://github.com/user-attachments/assets/9d944c5d-27d9-446b-a10c-bf8c28c54216)
+
 
 This might take up to 5 - 10 mins before everything is destroyed.
 03. After everything is destroyed through terraform, you can now go to your EC2 and terminate your Instance.....
